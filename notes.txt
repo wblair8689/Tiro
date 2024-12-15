@@ -1,0 +1,22 @@
+Before generating or modifying code:
+1. First read and analyze all related files to understand existing types and structures
+2. Check for existing type declarations in the codebase, especially in shared/common files
+3. Verify all necessary imports are present and correct
+
+When writing new code:
+1. Place shared types, protocols, and extensions in dedicated files (e.g., SharedTypes.swift, Protocols.swift)
+2. Explicitly declare all dependencies at the top of each file
+3. Never duplicate type declarations - if a type might be used elsewhere, put it in a shared file
+4. Verify protocol conformance is complete with all required methods and properties
+
+After writing code:
+1. Verify all types match and are properly imported
+2. Check for duplicate declarations across all modified files
+3. Ensure all protocols and overrides are fully implemented
+4. Confirm file naming follows the project's conventions
+5. If modifying existing types, verify all existing usages remain valid
+
+When receiving error messages:
+1. Address the root cause rather than just the symptom
+2. If a type conflict occurs, always move shared types to a dedicated file
+3. Document any assumptions made about existing types or structures

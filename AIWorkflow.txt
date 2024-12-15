@@ -1,0 +1,59 @@
+TITLE: Swift + Python + Future Web Dev Monorepo with Xcode & Cursor Integration
+
+OVERVIEW:
+We are creating a monorepo structured around a Swift Package Manager (SPM) project 
+for Swift code, complemented by a separate Python module and test suite, with the 
+future option of adding a React or similar web front-end. The goal is to maintain 
+TDD across all sub-projects, allow seamless file creation from an AI code editor 
+(Cursor), and ensure that Xcode recognizes newly generated files automatically.
+
+STRUCTURE:
+my-monorepo/
+├── Package.swift
+├── Sources/
+│   └── ...
+├── Tests/
+│   └── ...
+├── python/
+│   ├── requirements.txt
+│   └── ...
+└── web/
+    └── ...
+
+SWIFT PROJECT MANAGEMENT:
+• Use Swift Package Manager as the canonical build system.
+• Open the package in Xcode via the 'Package.swift' file.
+• Rely on Xcode’s auto-generated workspace for building and running tests.
+• TDD is enforced through XCTest in 'Tests/'.
+
+PYTHON MODULE:
+• Python code lives under 'python/'.
+• Use 'pytest' (or similar) in 'python/tests/' for TDD.
+• Separate Python dependencies via 'requirements.txt' or 'pyproject.toml'.
+• (Optional) Integrate with Swift using PythonKit or external processes.
+
+WEB/REACT (OPTIONAL LATER):
+• Place React (or other framework) in 'web/'.
+• Maintain its own build/test system (npm/yarn).
+• Keep TDD with Jest, Cypress, or your tool of choice.
+
+DEV WORKFLOW WITH CURSOR:
+1. Open the root of the monorepo in Cursor.
+2. Let Cursor auto-generate Swift files under 'Sources/' or 'Tests/' – Xcode automatically picks them up.
+3. Let Cursor auto-generate Python files under 'python/' – 'pytest' automatically sees them.
+4. Write/Generate tests first (TDD), then implement features.
+
+CI/CD PIPELINE:
+• Unified pipeline:
+  1. swift test
+  2. pip install -r python/requirements.txt && pytest python/tests/
+  3. (Optional) cd web && npm install && npm test
+• Ensures the code passes all tests before merging.
+
+BENEFITS:
+• No manual .xcodeproj file updates needed.
+• Easy TDD for both Swift and Python code.
+• Straightforward addition of a React/web project later.
+• Cursor file generation integrates seamlessly with the SwiftPM folder conventions.
+
+END OF DOCUMENT

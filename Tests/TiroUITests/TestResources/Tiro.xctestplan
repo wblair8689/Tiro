@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "B85B0C9F-7E0B-4B1B-8F76-3E9F9B6D3772",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:",
+      "identifier" : "TiroApp",
+      "name" : "TiroApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "TiroUITests",
+        "name" : "TiroUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "TiroTests",
+        "name" : "TiroTests"
+      }
+    }
+  ],
+  "version" : 1
+} 

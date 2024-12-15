@@ -1,0 +1,44 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-swift:
+    name: Swift Tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      
+      - name: Build and Test
+        run: |
+          swift package clean
+          swift build
+          swift test
+  
+  test-python:
+    name: Python Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r python/requirements.txt
+          
+      - name: Run tests
+        run: |
+          cd python
+          pytest tests/ 
